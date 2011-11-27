@@ -1,0 +1,12 @@
+{
+  "name": "Version Copy",
+  "version": "1.0",
+  "description": "Copies verison information to the clipboard.",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "clipboardWrite"
+  ]
+}

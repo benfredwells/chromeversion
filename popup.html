@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<script>
+function closePopup() {
+  window.close();
+}
+
+function onPopup() {
+  var feedback = document.getElementById('feedback');
+  var agent = navigator.userAgent;
+  var osPattern = /\(.*?\)/;
+  var versionPattern = /Chrome.*? /;
+  var os = agent.match(osPattern);
+  var version = agent.match(versionPattern);
+  if (!(os && version)) {
+    feedback.innerHTML = 'Couldn\'t parse userAgent';
+  } else {
+    var selection = document.getElementById('selection');
+    var versionText = version + ' ' + os;
+    selection.innerHTML = versionText;
+    selection.select();
+    document.execCommand('Copy');
+    feedback.innerHTML = "Copied";
+    setTimeout("closePopup();", 1000);
+  }
+}
+</script>
+<style>
+  textarea { position: absolute; left: -500px; }
+</style>
+</html>
+<body onLoad="onPopup()">
+<span id="feedback"></span>
+<textarea id="selection"></textarea>
+</body>
+</html>
